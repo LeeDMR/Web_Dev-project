@@ -1,0 +1,47 @@
+<ng-container *ngIf="!logged">
+    <div class="centered-container">
+      <button (click)="showRegistrationForm = !showRegistrationForm">Toggle Registration Form</button>
+      
+      <div *ngIf="showRegistrationForm" class="form-container">
+        <h3>Registration Form</h3>
+      <form (ngSubmit)="register()">
+        <div>
+          <label for="username_reg">Username:</label>
+          <input type="text" id="username_reg" [(ngModel)]="usernameReg" name="username_reg" required>
+        </div>
+        <div>
+          <label for="password_reg">Password:</label>
+          <input type="password" id="password_reg" [(ngModel)]="passwordReg" name="password_reg" required>
+        </div>
+        <div>
+          <label for="role">Role:</label>
+          <select id="role" [(ngModel)]="role" name="role" required>
+            <option value="executor">Executor</option>
+            <option value="client">Client</option>
+          </select>
+        </div>
+        <button type="submit">Register</button>
+      </form>
+      </div>
+  
+      <div class="form-container">
+        <h3>Login Form</h3>
+        <fieldset>
+            <label for="username_log">Username: </label>
+            <input type="text" id="username_log" [(ngModel)]="username">
+          </fieldset>
+          <fieldset>
+            <label for="password_log">Password: </label>
+            <input type="password" id="password_log" [(ngModel)]="password">
+          </fieldset>
+          <button (click)="login()">Login</button>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="logged">
+    <button (click)="logout()">Logout</button>
+    <button (click)="goToCreateOrder()">Create Order</button>
+    <app-orders-list></app-orders-list>
+    <app-profile></app-profile>
+  </ng-container>
+  

@@ -1,0 +1,20 @@
+<div>
+  <h2>Create Order</h2>
+  <form (ngSubmit)="onSubmit()">
+    <label>Title:
+      <input [(ngModel)]="order.title" name="title">
+    </label><br>
+    <label>Description:
+      <textarea [(ngModel)]="order.description" name="description"></textarea>
+    </label><br>
+    <label>Category:
+      <select [(ngModel)]="order.category" name="category">
+        <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+      </select>
+    </label><br>
+    <label>Price:
+      <input type="number" [(ngModel)]="order.reward" name="price" min="0">
+    </label><br>
+    <button type="submit">Create Order</button>
+  </form>
+</div>

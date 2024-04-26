@@ -1,0 +1,23 @@
+<div class="orders-container">
+  <h2>Orders List</h2>
+  <div class="orders-grid">
+    <ng-container *ngFor="let order of orders">
+      <div class="order-card">
+        <div class="order-header">
+          <h3>{{ order.title }}</h3>
+          <span class="order-price">{{ order.reward | currency }}</span>
+        </div>
+        <p class="order-description">Description: {{ order.description }}</p>
+        <div class="order-info">
+          <span class="order-category">Category: {{ order.category?.name }}</span>
+          <span class="order-date">Created at: {{ order.created_at | date:'medium' }}</span>
+        </div>
+        <div class="order-meta">
+          <span class="order-status">Status: {{ order.status }}</span>
+          <span class="order-creator">Creator: {{ order.creator?.username }}</span>
+        </div>
+        <button class="order-button" (click)="takeOrder(order.id)">Take Order</button>
+      </div>
+    </ng-container>
+  </div>
+</div>

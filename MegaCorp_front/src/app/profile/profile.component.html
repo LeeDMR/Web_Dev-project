@@ -1,0 +1,20 @@
+
+<h2>Your Profile</h2>
+<div>
+  <h3>Balance: {{ balance }}</h3>
+  <h3>Your Orders:</h3>
+  <ul>
+    <li *ngFor="let order of orders">{{ order.title }} - {{ order.status }}</li>
+  </ul>
+  <h3>Your Reviews:</h3>
+  <ul>
+    <li *ngFor="let review of reviews">{{ review.comment }} - {{ review.rating }}</li>
+  </ul>
+</div>
+<div *ngFor="let order of orders">
+    <h3>{{ order.title }}</h3>
+    <p>Description: {{ order.description }}</p>
+    <p>Status: {{ order.status }}</p>
+    <p *ngIf="order.executor">Executor: {{ order.executor }}</p>
+    <button *ngIf="order.executor && !order.is_completed" (click)="completeOrder(order.id)">Mark Order as Completed</button>
+  </div>
